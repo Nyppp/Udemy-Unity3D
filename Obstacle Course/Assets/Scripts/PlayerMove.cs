@@ -18,11 +18,25 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PrintInstcution();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        MovePlayer();
+    }
+
+    //모노비헤이비어 상속으로 사용하는 Start나, Update들은 콜백함수이며,
+    //사용자가 직접 스크립트에서 이처럼 함수를 작성하여 사용할 수 있다.
+    void PrintInstcution()
+    {
+        Debug.Log("Welcom to the game");
+        Debug.Log("Move your player with WASD or Arrow keys");
+        Debug.Log("Don't hit the walls!");
+    }
+
+    void MovePlayer()
     {
         //Translate -> 매개변수로 주어진 벡터만큼, 액터의 트랜스폼에 더함
         //매개변수로 직접 값을 넣는 경우
@@ -37,4 +51,5 @@ public class PlayerMove : MonoBehaviour
         //매개변수로 변수를 넣어 사용하는 경우
         transform.Translate(moveVec * Time.deltaTime * moveSpeed);
     }
+
 }
