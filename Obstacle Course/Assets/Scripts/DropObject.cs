@@ -5,11 +5,16 @@ using UnityEngine;
 public class DropObject : MonoBehaviour
 {
     Rigidbody rigid;
+    MeshRenderer meshRenderer;
+
     //특정 시간이 지난 뒤에 함수를 실행하는 방법
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         rigid.useGravity = false;
+
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.enabled = false;
 
         //Invoke를 사용해서 함수를 특정 시간 이후 호출하는 방법
         //Invoke("Drop", 3);
@@ -28,6 +33,7 @@ public class DropObject : MonoBehaviour
     void Drop()
     {
         rigid.useGravity = true;
+        meshRenderer.enabled = true;
     }
     
     //기본적인 코루틴 구조

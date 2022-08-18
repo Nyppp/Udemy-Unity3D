@@ -24,18 +24,13 @@ public class ObjectHit : MonoBehaviour
     //OnCollisionEnter : 충돌을 시작할 때 동작
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player")
-        {
-            meshRenderer.material.color = new Color(1, 0, 0);
-        }
+        meshRenderer.material.color = new Color(1, 0, 0);
+        
     }
 
     //OnCollisionExit : 충돌에서 벗어날 때 동작
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.name == "Player")
-        {
-            meshRenderer.material.color = defaultColor;
-        }
+        
     }
 }
