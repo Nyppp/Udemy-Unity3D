@@ -15,17 +15,16 @@ public class ObjectHit : MonoBehaviour
         defaultColor = meshRenderer.material.color;
     }
 
-    void Update()
-    {
-        
-    }
-
     //충돌에 관한 유니티 콜백함수
     //OnCollisionEnter : 충돌을 시작할 때 동작
     private void OnCollisionEnter(Collision collision)
     {
-        meshRenderer.material.color = new Color(1, 0, 0);
-        
+        //태그를 사용해 충돌 오브젝트를 구분 가능
+        if (collision.gameObject.tag == "Player")
+        {
+            meshRenderer.material.color = new Color(1, 0, 0);
+            gameObject.tag = "Hit";
+        }
     }
 
     //OnCollisionExit : 충돌에서 벗어날 때 동작

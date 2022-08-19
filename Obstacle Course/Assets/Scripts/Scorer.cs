@@ -12,8 +12,8 @@ public class Scorer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player")
-        {
+        if(collision.gameObject.tag != "Hit" && collision.gameObject.tag != "Ground")
+        { 
             Debug.Log("Á¡¼ö : " + (++hits));
         }
     }
