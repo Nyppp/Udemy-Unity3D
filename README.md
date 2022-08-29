@@ -4,7 +4,7 @@
 
 # 학습 기록
 
-Obstacle Course
+<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/Obstacle%20Course>Obstacle Course</a>
 - 유니티에서의 변수 선언과 접근 제한자 및 인스펙터 사용 방법 학습 + SerializedField
 - 유니티 제공 콜백함수(Start, Update, FixedUpdate) 사용한 오브젝트 조작
 - Input클래스 사용한 오브젝트 이동
