@@ -10,3 +10,10 @@
 - Input클래스 사용한 오브젝트 이동
 - Cinemachin을 사용해 오브젝트를 따라다니는 Follow Camera 기능 구현
 - 기본적인 레벨 디자인 및 씬 내의 오브젝트 배치
+
+
+#
+
+<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/ProjectBoost>Project Boost</a>
+- Update 함수에서 키 입력 처리를 받고, 플레이어의 물리적 처리를 FixedUpdate에서 처리하는 방법 학습
+- 학습중..
