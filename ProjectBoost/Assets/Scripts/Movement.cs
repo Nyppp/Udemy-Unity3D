@@ -5,55 +5,131 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody rigid;
+    AudioSource audioSource;
 
     public float jumpPower;
     public float rotatePower;
 
-    float rotateFlag;
+    public AudioClip engineSound;
 
-    // Start is called before the first frame update
+    public ParticleSystem mainBoost;
+    public ParticleSystem leftBoost;
+    public ParticleSystem rightBoost;
+
+    float rotateFlag;
+    float rotateAngle;
+    bool isAlive;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         rotateFlag = 0f;
+        rotateAngle = 0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //기본 input에 대한 바인딩
         ProcessThrust();
         ProcessRotation();
     }
 
     private void FixedUpdate()
     {
-        transform.Rotate(Vector3.forward * rotatePower * rotateFlag);
+        RotateFixed();
     }
 
     void ProcessThrust()
     {
-        if(Input.GetButton("Jump"))
+        if(Input.GetKey(KeyCode.Space))
         {
-            rigid.AddRelativeForce(Vector3.up * jumpPower * Time.deltaTime);
+            StartThrust();
+        }
+        else
+        {
+            StopThrust();
+        }
+    }
+    
+    void StartThrust()
+    {
+        rigid.AddRelativeForce(Vector3.up * jumpPower * Time.deltaTime);
+
+        if (!mainBoost.isPlaying)
+        {
+            mainBoost.Play();
+        }
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(engineSound);
         }
     }
 
+    void StopThrust()
+    {
+        mainBoost.Stop();
+        audioSource.Stop();
+    }
+
+    
+
+    void RotateFixed()
+    {
+        if (rotateFlag == 0)
+        {
+            rigid.freezeRotation = true;
+        }
+        else
+        {
+            rigid.freezeRotation = false;
+            rotateAngle += rotateFlag;
+            transform.rotation = Quaternion.Euler(0, 0, rotateAngle);
+        }
+    }
 
     //회전 입력을 프레임에 독립적으로 사용하기 위해 키 입력은 Update문에서, 회전동작은 FixedUpdate에서 사용
     void ProcessRotation()
     {
         if(Input.GetKey(KeyCode.A))
         {
-            rotateFlag = 1;
+            RotateLeft();
         }
         else if(Input.GetKey(KeyCode.D))
         {
-            rotateFlag = -1;
+            RotateRight();
         }
         else
         {
-            rotateFlag = 0;
+            StopRotate();
+        }
+    }
+
+    void StopRotate()
+    {
+        leftBoost.Stop();
+        rightBoost.Stop();
+
+        rotateFlag = 0;
+    }
+
+    void RotateRight()
+    {
+        rotateFlag = -1;
+
+        if (!rightBoost.isPlaying)
+        {
+            rightBoost.Play();
+        }
+    }
+
+    void RotateLeft()
+    {
+        rotateFlag = 1;
+
+        if (!leftBoost.isPlaying)
+        {
+            leftBoost.Play();
         }
     }
 }
