@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     Rigidbody rigid;
     AudioSource audioSource;
+    BoxCollider playerCollider;
 
     public float jumpPower;
     public float rotatePower;
@@ -44,6 +45,7 @@ public class Movement : MonoBehaviour
         if(Input.GetKey(KeyCode.Space))
         {
             StartThrust();
+            Debug.Log("ºÎ½ºÆ®");
         }
         else
         {
@@ -53,7 +55,7 @@ public class Movement : MonoBehaviour
     
     void StartThrust()
     {
-        rigid.AddRelativeForce(Vector3.up * jumpPower * Time.deltaTime);
+        rigid.AddRelativeForce(Vector3.up * jumpPower * Time.deltaTime, ForceMode.Impulse);
 
         if (!mainBoost.isPlaying)
         {

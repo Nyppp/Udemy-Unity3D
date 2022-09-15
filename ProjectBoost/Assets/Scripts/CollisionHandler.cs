@@ -15,6 +15,7 @@ public class CollisionHandler : MonoBehaviour
 
     //상태 전환 여부(씬 로딩 대기, 사망 처리 중)
     bool isTransitioning = false;
+    bool isCollisionDisable = false;
 
     private void Awake()
     {
@@ -22,9 +23,29 @@ public class CollisionHandler : MonoBehaviour
         isTransitioning = false;
     }
 
+    void Update()
+    {
+        DebugFunction();
+    }
+
+    private void DebugFunction()
+    {
+        //다음 씬 호출
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+
+        //콜리젼 비활성화 토글
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            isCollisionDisable = !isCollisionDisable;
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
-        if(isTransitioning == true) { return; }
+        if(isTransitioning == true || isCollisionDisable == true) { return; }
         switch(collision.gameObject.tag)
         {
             case "Friendly":
