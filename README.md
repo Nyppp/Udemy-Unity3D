@@ -5,7 +5,7 @@
 |:----:|:----:|:----:|
 |Obstacle Course|[Summery](#obstacle-course)|<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/ObstacleCourse>link</a>|
 |Project Boost|[Summery](#project-boost)|<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/ProjectBoost>link</a>|
-|Argon Assault|||
+|Argon Assault|[Summery](#argon-assault)|<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/ArgonAssult/Assets>link</a>|
 |Realm Rush|||
 |Zombie Runner|||
 #
@@ -26,3 +26,8 @@
 - 오브젝트 회전에서, 직접 transform을 수정하는 것 대신 쿼터니언의 오일러각을 이용해 더 적은 오차로 회전
 - 사운드와 파티클 시스템 기본적 사용 방법 학습
 - 오브젝트 이동을 sin함수와 같은 수식으로 구현하는 방법 학습
+
+# Argon Assault
+- 툴을 사용한 터레인 맵 제작 방법 기초 학습
+- Input 시스템 학습(일반 Input 사용한 키입력 받기 - 업데이트문 사용, InputAction으로 키 매핑하여 입력 받기 - 콜백 처리)
+- 학습중..
