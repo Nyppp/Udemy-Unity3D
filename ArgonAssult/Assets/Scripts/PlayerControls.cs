@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,16 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float xRange = 5f;
     [SerializeField] float yRange = 5f;
 
+    [SerializeField] float positionPitchFactor = -2f;
+    [SerializeField] float controlPitchFactor = -10f;
+
+    [SerializeField] float positionYawFactor = 2f;
+
+    [SerializeField] float controlRollFactor = -10f;
+
+    float xMove;
+    float yMove;
+
     //인풋액션을 사용하면 enable과 disable 시에 활성, 비활성을 맞춰서 해야 한다.
     private void OnEnable()
     {
@@ -30,9 +41,34 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
+        ProcessTranslation();
+        ProcessRotation();
+
+        //InputAction을 사용한 입력 시스템
+        //float horizontalThrow = movement.ReadValue<Vector2>().x;
+        //float verticalThrow = movement.ReadValue<Vector2>().y;
+    }
+
+    void ProcessRotation()
+    {
+
+        float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
+        float pitchDueToControlMove = yMove * controlPitchFactor;
+
+        float pitch = pitchDueToPosition + pitchDueToControlMove;
+
+        float yaw = transform.localPosition.x * positionYawFactor;
+
+        float roll = xMove * controlRollFactor;
+
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(pitch, yaw, roll), Time.deltaTime * 10f);
+    }
+
+    private void ProcessTranslation()
+    {
         //기존 유니티 입력 시스템(로컬좌표 직접 수정)
-        float xMove = Input.GetAxis("Horizontal");
-        float yMove = Input.GetAxis("Vertical");
+        xMove = Input.GetAxis("Horizontal");
+        yMove = Input.GetAxis("Vertical");
 
         float xOffset = xMove * Time.deltaTime * moveSpeed;
         float rawXPos = transform.localPosition.x + xOffset;
@@ -46,9 +82,5 @@ public class PlayerControls : MonoBehaviour
 
         transform.localPosition =
             new Vector3(clampXPos, clampYPos, transform.localPosition.z);
-
-        //InputAction을 사용한 입력 시스템
-        //float horizontalThrow = movement.ReadValue<Vector2>().x;
-        //float verticalThrow = movement.ReadValue<Vector2>().y;
     }
 }
