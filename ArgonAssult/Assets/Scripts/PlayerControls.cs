@@ -14,15 +14,22 @@ public class PlayerControls : MonoBehaviour
 
     //[SerializeField] InputAction movement;
 
+    [Header("General Settings")]
+    [Tooltip("How Fast Ship moves Up and Down")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float xRange = 5f;
     [SerializeField] float yRange = 5f;
 
-    [SerializeField] float positionPitchFactor = -2f;
-    [SerializeField] float controlPitchFactor = -10f;
+    [Header("Laser Effect Array")]
+    [Tooltip("Add all lasers here")]
+    [SerializeField] GameObject[] lasers;
 
+    [Header("Screen position based Tuning")]
+    [SerializeField] float positionPitchFactor = -2f;
     [SerializeField] float positionYawFactor = 2f;
 
+    [Header("Player input based Tuning")]
+    [SerializeField] float controlPitchFactor = -10f;
     [SerializeField] float controlRollFactor = -10f;
 
     float xMove;
@@ -31,7 +38,7 @@ public class PlayerControls : MonoBehaviour
     //인풋액션을 사용하면 enable과 disable 시에 활성, 비활성을 맞춰서 해야 한다.
     private void OnEnable()
     {
-        //movement.Enable();
+        
     }
 
     private void OnDisable()
@@ -43,10 +50,32 @@ public class PlayerControls : MonoBehaviour
     {
         ProcessTranslation();
         ProcessRotation();
+        ProcessFiring();
 
         //InputAction을 사용한 입력 시스템
         //float horizontalThrow = movement.ReadValue<Vector2>().x;
         //float verticalThrow = movement.ReadValue<Vector2>().y;
+    }
+
+    private void ProcessFiring()
+    {
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            SetParticleActive(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            SetParticleActive(false);
+        }
+    }
+
+    private void SetParticleActive(bool isActive)
+    {
+        foreach (var laser in lasers)
+        {
+            var emissionModule = laser.GetComponent<ParticleSystem>().emission;
+            emissionModule.enabled = isActive;
+        }
     }
 
     void ProcessRotation()
