@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float loadDelay = 1f;
+    [SerializeField] ParticleSystem crashVFX;
     bool isTransitioning = false;
 
     private void OnCollisionEnter(Collision collision)
@@ -27,6 +28,10 @@ public class CollisionHandler : MonoBehaviour
             return;
         else
         {
+            crashVFX.Play();
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
+
             isTransitioning = true;
             GetComponent<PlayerControls>().enabled = false;
             StartCoroutine(ReloadScene());
