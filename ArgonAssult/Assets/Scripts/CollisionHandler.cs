@@ -28,14 +28,19 @@ public class CollisionHandler : MonoBehaviour
             return;
         else
         {
-            crashVFX.Play();
-            GetComponent<MeshRenderer>().enabled = false;
-            GetComponent<BoxCollider>().enabled = false;
-
-            isTransitioning = true;
-            GetComponent<PlayerControls>().enabled = false;
-            StartCoroutine(ReloadScene());
+            ProcessPlayerDead();
         }
+    }
+
+    private void ProcessPlayerDead()
+    {
+        crashVFX.Play();
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
+
+        isTransitioning = true;
+        GetComponent<PlayerControls>().enabled = false;
+        StartCoroutine(ReloadScene());
     }
 
     IEnumerator ReloadScene()
