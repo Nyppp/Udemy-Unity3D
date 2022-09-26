@@ -50,6 +50,8 @@ public class Enemy : MonoBehaviour
         GameObject vfx = Instantiate(deathVFX, transform.position, transform.rotation);
         vfx.transform.parent = parentGameobject.transform;
 
+        scoreboard.IncreaseScore(HitPoint);
+
         Destroy(this.gameObject);
     }
 }

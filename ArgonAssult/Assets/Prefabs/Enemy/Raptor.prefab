@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 3197462698738417733}
   - component: {fileID: 3203369348381557997}
   - component: {fileID: -9093470152794976373}
+  - component: {fileID: -2438689101925476556}
   m_Layer: 0
   m_Name: Raptor
   m_TagString: Untagged
@@ -416,9 +417,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathVFX: {fileID: 2407878224008753833, guid: cc54acf754b683f4380d6c42d900a359, type: 3}
   hitVFX: {fileID: 2407878224008753833, guid: a74507a80e2875c4797073553cfa865e, type: 3}
-  parentTransform: {fileID: 0}
   HitPoint: 3
   scorePerHit: 5
+--- !u!65 &-2438689101925476556
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179972553110095567}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.1566553, y: 2.955462, z: 10.7425585}
+  m_Center: {x: 0, y: -0.000011980534, z: 0}
 --- !u!1 &3936834845339538905
 GameObject:
   m_ObjectHideFlags: 0
