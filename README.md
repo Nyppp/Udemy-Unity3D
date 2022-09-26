@@ -6,7 +6,7 @@
 |Obstacle Course|[Summery](#obstacle-course)|<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/ObstacleCourse>link</a>|
 |Project Boost|[Summery](#project-boost)|<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/ProjectBoost>link</a>|
 |Argon Assault|[Summery](#argon-assault)|<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/ArgonAssult/Assets>link</a>|
-|Realm Rush|||
+|Realm Rush|[Summery](#argon-assault)||
 |Zombie Runner|||
 #
 # 학습 기록
@@ -32,3 +32,8 @@
 - 타임라인 사용한 컷씬 연출 방법 
 - Input 시스템 학습(일반 Input 사용한 키입력 받기 - 업데이트문 사용, InputAction으로 키 매핑하여 입력 받기 - 콜백 처리)
 - Lerp(선형 보간)을 통해 플레이어 입력을 받아 회전하는 동작을 자연스럽게 처리
+- 인스펙터(툴)를 사용한 라이팅 조정, 포스트 프로세싱을 추가해 조명 보정, 후처리 방법 학습
+- 싱글톤 패턴을 사용해 배경음악 재생 오브젝트 구현
+
+# Realm Rush
+- 학습 중...
