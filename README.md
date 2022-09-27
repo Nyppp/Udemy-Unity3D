@@ -6,7 +6,7 @@
 |Obstacle Course|[Summery](#obstacle-course)|<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/ObstacleCourse>link</a>|
 |Project Boost|[Summery](#project-boost)|<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/ProjectBoost>link</a>|
 |Argon Assault|[Summery](#argon-assault)|<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/ArgonAssult/Assets>link</a>|
-|Realm Rush|[Summery](#argon-assault)||
+|Realm Rush|[Summery](#argon-assault)|<a href=https://github.com/Nyppp/Udemy-Unity3D/tree/main/Realm%20Rush>link</a>|
 |Zombie Runner|||
 #
 # 학습 기록
@@ -36,4 +36,7 @@
 - 싱글톤 패턴을 사용해 배경음악 재생 오브젝트 구현
 
 # Realm Rush
+- 프리펩을 상속하여 자식 프리펩을 만들고 활용하는 방법 학습
+- 코루틴 내부에서 Lerp를 사용해 특정 위치로 부드럽게 이동
+- 임의의 좌표계 크기를 지정하고, TextMeshPro 사용해 오브젝트 위에 overlay시켜 좌표를 표시하는 방법 학습
 - 학습 중...
