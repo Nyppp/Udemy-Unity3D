@@ -8,12 +8,20 @@ using TMPro;
 [ExecuteAlways]
 public class CoordinateLabeler : MonoBehaviour
 {
+    [SerializeField] Color defaultColor = Color.black;
+    [SerializeField] Color blockedColor = Color.white;
+
     TextMeshPro label;
     Vector2Int coordinate = new Vector2Int();
+    WayPoint waypoint;
 
     void Awake()
     {
         label = GetComponent<TextMeshPro>();
+        waypoint = GetComponentInParent<WayPoint>();
+
+        label.enabled = false;
+
         DisplayCoordinate();
     }
 
@@ -24,6 +32,29 @@ public class CoordinateLabeler : MonoBehaviour
             //에디터 모드에서만 실행
             DisplayCoordinate();
             UpdateObejctName();
+        }
+
+        ColorCoordinates();
+        ToggleLabels();
+    }
+
+    void ToggleLabels()
+    {
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            label.enabled = !label.enabled;
+        }
+    }
+
+    private void ColorCoordinates()
+    {
+        if(waypoint.IsPlacable)
+        {
+            label.color = defaultColor;
+        }
+        else
+        {
+            label.color = blockedColor;
         }
     }
 
