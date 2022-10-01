@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int maxHitPoints = 5;
     int currnetHitPoints = 0;
 
-    private void Start()
+    private void OnEnable()
     {
         currnetHitPoints = maxHitPoints;
     }
