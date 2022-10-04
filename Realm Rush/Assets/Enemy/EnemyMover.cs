@@ -19,17 +19,18 @@ public class EnemyMover : MonoBehaviour
     [Range(0f,5f)]
     [SerializeField] float speed = 1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Enemy enemy;
 
     void OnEnable()
     {
         FindPath();
         ReturnToStart();
         StartCoroutine(FollowPath());
+    }
+
+    private void Start()
+    {
+        enemy = GetComponent<Enemy>();
     }
 
     void FindPath()
@@ -72,5 +73,6 @@ public class EnemyMover : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+        enemy.StealGold();
     }
 }
