@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour
 {
-    [SerializeField] GameObject towerPrefab;
-
+    [SerializeField] Tower towerPrefab;
     //private 변수에 대한 접근 방법
     [SerializeField] bool isPlacable;
+
     //프로퍼티를 통해 get, set 선언
     public bool IsPlacable
     {
@@ -24,8 +24,8 @@ public class WayPoint : MonoBehaviour
     {
         if (isPlacable)
         {
-            Instantiate(towerPrefab, transform.position, Quaternion.identity);
-            isPlacable = false;
+            bool isPlaced = towerPrefab.CreateTower(towerPrefab, transform.position);
+            isPlacable = !isPlaced;
         }
     }
 }
