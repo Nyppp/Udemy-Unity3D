@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
     //배열과 리스트의 차이
@@ -13,7 +14,6 @@ public class EnemyMover : MonoBehaviour
 
     //리스트와 배열은 모두 탐색 시 참조를 정확히 하지 않고 임시 변수를 사용하면
     //많은 가비지 컬렉션을 유발하기 때문에 참조를 이용해 최대한 GC를 방지해야 한다.
-
     [SerializeField] List<WayPoint> path = new List<WayPoint>();
 
     [Range(0f,5f)]
@@ -37,18 +37,42 @@ public class EnemyMover : MonoBehaviour
     {
         path.Clear();
         
-        //태그를 통한 오브젝트 탐색 -> 하이어라키 창 순서대로 정렬
-        GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Path");
+        //태그를 통한 오브젝트 탐색 -> 하이어라키 창 순서대로 정렬(트랜스폼 기준)
+        GameObject parent = GameObject.FindGameObjectWithTag("Path");
 
-        foreach (GameObject waypoint in waypoints)
+        //Getchild 사용
+        /*int pathNum = parent.transform.childCount;
+
+        for (int i = 0; i < pathNum; i++)
         {
-            path.Add(waypoint.GetComponent<WayPoint>());
+            WayPoint wayPoint = parent.transform.GetChild(i).GetComponent<WayPoint>();
+            if(wayPoint != null)
+            {
+                path.Add(wayPoint);
+            }
+        }*/
+
+        //트랜스폼 접근을 통해 자식 오브젝트 가져옴
+        foreach (Transform child in parent.transform)
+        {
+            WayPoint wayPoint = child.GetComponent<WayPoint>();
+
+            if(wayPoint != null)
+            {
+                path.Add(wayPoint);
+            }
         }
     }
 
     void ReturnToStart()
     {
         transform.position = path[0].transform.position;
+    }
+
+    void FinishPath()
+    {
+        enemy.StealGold();
+        gameObject.SetActive(false);
     }
 
     IEnumerator FollowPath()
@@ -72,7 +96,6 @@ public class EnemyMover : MonoBehaviour
             }
         }
 
-        gameObject.SetActive(false);
-        enemy.StealGold();
+        FinishPath();
     }
 }

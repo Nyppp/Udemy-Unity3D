@@ -6,7 +6,11 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField] GameObject obj;
+
+    [Range(0,50)]
     [SerializeField] int poolSize = 5;
+
+    [Range(0.1f, 30f)]
     [SerializeField] float spawnDelay = 1f;
 
     GameObject[] pool;

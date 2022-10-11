@@ -6,6 +6,7 @@ using TMPro;
 
 //에디터모드, 플레이 모드에서 모두 똑같은 실행을 해주는 속성값
 [ExecuteAlways]
+[RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabeler : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.black;
@@ -34,7 +35,7 @@ public class CoordinateLabeler : MonoBehaviour
             UpdateObejctName();
         }
 
-        ColorCoordinates();
+        SetLabelColor();
         ToggleLabels();
     }
 
@@ -46,7 +47,7 @@ public class CoordinateLabeler : MonoBehaviour
         }
     }
 
-    private void ColorCoordinates()
+    private void SetLabelColor()
     {
         if(waypoint.IsPlacable)
         {
