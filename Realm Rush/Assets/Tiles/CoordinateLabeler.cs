@@ -33,6 +33,8 @@ public class CoordinateLabeler : MonoBehaviour
             //에디터 모드에서만 실행
             DisplayCoordinate();
             UpdateObejctName();
+            label.enabled = true;
+            Time.timeScale = 5f;
         }
 
         SetLabelColor();
