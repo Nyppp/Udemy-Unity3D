@@ -14,12 +14,14 @@ public class EnemyMover : MonoBehaviour
 
     //리스트와 배열은 모두 탐색 시 참조를 정확히 하지 않고 임시 변수를 사용하면
     //많은 가비지 컬렉션을 유발하기 때문에 참조를 이용해 최대한 GC를 방지해야 한다.
-    [SerializeField] List<WayPoint> path = new List<WayPoint>();
+    [SerializeField] List<Node> path = new List<Node>();
 
     [Range(0f,5f)]
     [SerializeField] float speed = 1f;
 
     Enemy enemy;
+    GridManager gridManager;
+    Pathfinder pathfinder;
 
     void OnEnable()
     {
@@ -28,45 +30,25 @@ public class EnemyMover : MonoBehaviour
         StartCoroutine(FollowPath());
     }
 
-    private void Start()
+    private void Awake()
     {
         enemy = GetComponent<Enemy>();
+        gridManager = FindObjectOfType<GridManager>();
+        pathfinder = FindObjectOfType<Pathfinder>();
     }
 
     void FindPath()
     {
         path.Clear();
-        
-        //태그를 통한 오브젝트 탐색 -> 하이어라키 창 순서대로 정렬(트랜스폼 기준)
-        GameObject parent = GameObject.FindGameObjectWithTag("Path");
 
-        //Getchild 사용
-        /*int pathNum = parent.transform.childCount;
+        path = pathfinder.GetNewPath();
 
-        for (int i = 0; i < pathNum; i++)
-        {
-            WayPoint wayPoint = parent.transform.GetChild(i).GetComponent<WayPoint>();
-            if(wayPoint != null)
-            {
-                path.Add(wayPoint);
-            }
-        }*/
-
-        //트랜스폼 접근을 통해 자식 오브젝트 가져옴
-        foreach (Transform child in parent.transform)
-        {
-            WayPoint wayPoint = child.GetComponent<WayPoint>();
-
-            if(wayPoint != null)
-            {
-                path.Add(wayPoint);
-            }
-        }
     }
 
     void ReturnToStart()
     {
-        transform.position = path[0].transform.position;
+        transform.position = gridManager.GetPositionFromCoordinates(pathfinder.StartCoordinates);
+        
     }
 
     void FinishPath()
@@ -77,10 +59,10 @@ public class EnemyMover : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        foreach (WayPoint waypoint in path)
+        for(int i = 0; i < path.Count; ++i)
         {
             Vector3 startPosition = transform.position; 
-            Vector3 endPosition = waypoint.transform.position;
+            Vector3 endPosition = gridManager.GetPositionFromCoordinates(path[i].coordinates);
 
             float travelPercent = 0f;
 

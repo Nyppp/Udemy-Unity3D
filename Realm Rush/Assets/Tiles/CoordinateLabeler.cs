@@ -80,9 +80,11 @@ public class CoordinateLabeler : MonoBehaviour
 
     void DisplayCoordinate()
     {
+        if(gridManager == null) { return; }
+
         //현재 좌표 / 에디터 기준 스냅 크기로 나누면, 원하는 좌표값을 얻어낼 수 있음
-        coordinate.x = Mathf.RoundToInt(transform.parent.position.x / UnityEditor.EditorSnapSettings.move.x);
-        coordinate.y = Mathf.RoundToInt(transform.parent.position.z / UnityEditor.EditorSnapSettings.move.z);
+        coordinate.x = Mathf.RoundToInt(transform.parent.position.x / gridManager.UnityGridSize);
+        coordinate.y = Mathf.RoundToInt(transform.parent.position.z / gridManager.UnityGridSize);
         label.text = $"{coordinate.x},{coordinate.y}";
     }
 
