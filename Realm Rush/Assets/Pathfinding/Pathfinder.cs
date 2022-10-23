@@ -52,15 +52,21 @@ public class Pathfinder : MonoBehaviour
         GetNewPath();
     }
 
+    //시작점에서 경로를 재설정 하는 함수와, 중간 지점에서 재설정하는 함수
+    //오버로딩을 사용해 구현
     public List<Node> GetNewPath()
     {
-        gridManager.ResetNode();
-        BFS();
+        return GetNewPath(startCoordinates);
+    }
 
+    public List<Node> GetNewPath(Vector2Int coordinates)
+    {
+        gridManager.ResetNode();
+        BFS(coordinates);
         return BuildPath();
     }
 
-
+    //길찾기 알고리즘에서 큐에 경로가 될 수 있는 타일정보를 모두 삽입
     private void ExploreNeighbors()
     {
         List<Node> neighbors = new List<Node>();
@@ -86,7 +92,8 @@ public class Pathfinder : MonoBehaviour
         }
     }
 
-    void BFS()
+    //길찾기 알고리즘 - 최단경로 탐색(큐를 사용한 BFS)
+    void BFS(Vector2Int coordinates)
     {
         startNode.isWalkable = true;
         destinationNode.isWalkable = true;
@@ -96,8 +103,8 @@ public class Pathfinder : MonoBehaviour
 
         bool isRunning = true;
 
-        frontier.Enqueue(startNode);
-        reached.Add(startCoordinates, startNode);
+        frontier.Enqueue(grid[coordinates]);
+        reached.Add(coordinates, grid[coordinates]);
 
         while(frontier.Count > 0 && isRunning)
         {
@@ -112,6 +119,8 @@ public class Pathfinder : MonoBehaviour
         }
     }
 
+    //타일들은 모두 다음 경로가 어디인지 가리키는 connectedTo를 가지고 있음
+    //만약 경로가 아니라면, 이 값은 null임. -> 이 값들을 모두 저장하면, 적이 이동하는 경로가 됨
     List<Node> BuildPath()
     {
         List<Node> path = new List<Node>();
@@ -152,5 +161,14 @@ public class Pathfinder : MonoBehaviour
         }
 
         return false;
+    }
+
+    //브로드캐스트메시지 -> 모노비헤이비어를 상속하는 모든 객체에게 이 함수를 실행하라는 메시지 전송
+    //해당 함수를 가지고 있는 객체는 메세지를 받고, 함수를 실행하게 된다.
+    //센드메시지는 이 메시지를 전달하는 오브젝트와 붙어있는 오브젝트만,
+    //브로드캐스트메시지는 씬 전체의 오브젝트에게(모든 모노비헤이비어 오브젝트) 전달한다.
+    public void NotifyReceivers()
+    {
+        BroadcastMessage("RecalculatePath", false , SendMessageOptions.DontRequireReceiver);
     }
 }

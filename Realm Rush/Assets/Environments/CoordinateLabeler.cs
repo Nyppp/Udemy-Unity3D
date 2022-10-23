@@ -22,7 +22,6 @@ public class CoordinateLabeler : MonoBehaviour
     {
         gridManager = FindObjectOfType<GridManager>();
         label = GetComponent<TextMeshPro>();
-
         label.enabled = false;
 
         DisplayCoordinate();
@@ -36,7 +35,7 @@ public class CoordinateLabeler : MonoBehaviour
             DisplayCoordinate();
             UpdateObejctName();
             label.enabled = true;
-            Time.timeScale = 5f;
+            Time.timeScale = 1f;
         }
 
         SetLabelColor();

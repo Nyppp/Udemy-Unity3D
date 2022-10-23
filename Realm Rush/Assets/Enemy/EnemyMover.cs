@@ -25,9 +25,8 @@ public class EnemyMover : MonoBehaviour
 
     void OnEnable()
     {
-        FindPath();
         ReturnToStart();
-        StartCoroutine(FollowPath());
+        RecalculatePath(true);
     }
 
     private void Awake()
@@ -37,12 +36,27 @@ public class EnemyMover : MonoBehaviour
         pathfinder = FindObjectOfType<Pathfinder>();
     }
 
-    void FindPath()
+    void RecalculatePath(bool resetPath)
     {
+        Vector2Int coordinates = new Vector2Int();
+
+        //경로 재설정이 초기화 작업으로 시작되는지, 중간 경로에서 재설정인지 확인
+        if(resetPath)
+        {
+            coordinates = pathfinder.StartCoordinates;
+        }
+        else
+        {
+            //중간에 경로를 재설정한다면, 현재 에너미 오브젝트 위치를 시작 좌표로 지정
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+        }
+
+        StopAllCoroutines();
         path.Clear();
+        path = pathfinder.GetNewPath(coordinates);
 
-        path = pathfinder.GetNewPath();
-
+        //경로를 다시 지정하였기 때문에, 실행되던 코루틴을 모두 멈추고 재시작
+        StartCoroutine(FollowPath());
     }
 
     void ReturnToStart()
@@ -59,7 +73,7 @@ public class EnemyMover : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        for(int i = 0; i < path.Count; ++i)
+        for(int i = 1; i < path.Count; ++i)
         {
             Vector3 startPosition = transform.position; 
             Vector3 endPosition = gridManager.GetPositionFromCoordinates(path[i].coordinates);

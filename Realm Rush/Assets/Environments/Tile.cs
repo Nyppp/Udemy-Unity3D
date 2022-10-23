@@ -46,13 +46,14 @@ public class Tile : MonoBehaviour
         //설치가 유효한 타일이며, 이곳에 설치하면 적이 이동할 경로가 없어지는지 체크
         if (gridManager.GetNode(coordinates).isWalkable && !pathfinder.WillBlockPath(coordinates))
         {
-            bool isPlaced = towerPrefab.CreateTower(towerPrefab, transform.position);
+            bool isSuccessful = towerPrefab.CreateTower(towerPrefab, transform.position);
 
-            if (isPlaced)
+            if (isSuccessful)
             {
-                isPlacable = !isPlaced;
                 gridManager.BlockNode(coordinates);
             }
+
+            pathfinder.NotifyReceivers();
         }
     }
 }
