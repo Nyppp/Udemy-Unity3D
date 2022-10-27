@@ -339,6 +339,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6372164162408121677}
     m_Modifications:
+    - target: {fileID: 868895506, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: FPCamera
+      value: 
+      objectReference: {fileID: 2000000}
     - target: {fileID: 2337074158996965286, guid: ada2587319194f542957a8c2ae277cb9,
         type: 3}
       propertyPath: m_RootOrder
@@ -398,6 +402,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Carbine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308641894304432404, guid: ada2587319194f542957a8c2ae277cb9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ada2587319194f542957a8c2ae277cb9, type: 3}

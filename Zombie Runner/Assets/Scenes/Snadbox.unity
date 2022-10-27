@@ -329,12 +329,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 448070033}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &663740397 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2000000, guid: c6453f8e1f814744d8b94e5a6d1f9942,
-    type: 3}
-  m_PrefabInstance: {fileID: 1614078611}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &684093961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -668,26 +662,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &868895502 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5198211887854263523, guid: c6453f8e1f814744d8b94e5a6d1f9942,
-    type: 3}
-  m_PrefabInstance: {fileID: 1614078611}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &868895506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868895502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d5ed0ea4dae9124a9c78cf8a64b4be1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FPCamera: {fileID: 663740397}
-  range: 100
 --- !u!1001 &909257237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1202,7 +1176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.054884
+      value: 12.09
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 3}
       propertyPath: m_LocalPosition.y
