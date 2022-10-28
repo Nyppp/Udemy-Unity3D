@@ -1,0 +1,20 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerHealth : MonoBehaviour
+{
+    [SerializeField] float health = 100f;
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        Debug.Log("플레이어 체력 : " + health);
+
+        if(health <= 0f)
+        {
+            Debug.Log("플레이어 사망");
+        }
+    }
+}
+
