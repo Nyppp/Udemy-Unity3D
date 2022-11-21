@@ -11,7 +11,9 @@ public class EnemyHealth : MonoBehaviour
     {
         hitPoints -= damage;
 
-        if(hitPoints <= 0f)
+        BroadcastMessage("OnDamagedTaken");
+        
+        if (hitPoints <= 0f) 
         {
             SetDead();
         }
