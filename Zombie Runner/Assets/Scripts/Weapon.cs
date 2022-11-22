@@ -11,6 +11,10 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect; //Instantiate를 위해 게임오브젝트로 선언
+
+    //Ammo클래스에 대해 선언했으나 Ammo클래스를 포함한 Player 인스턴스 자체를 할당하면,
+    //narrow 캐스팅으로 Ammo클래스를 참조할 수 있음
+    [SerializeField] Ammo ammo;
     
 
     void Update()
@@ -23,8 +27,15 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
+        if(ammo.GetCurrentAmmo() <= 0 )
+        {
+            Debug.Log("총알 부족");
+            return;
+        }
+
         PlayMuzzleFlash();
         ProcessRaycast();
+        ammo.ReduceCurrentAmmo();
     }
 
     private void PlayMuzzleFlash()

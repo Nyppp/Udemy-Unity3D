@@ -2362,18 +2362,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774849401}
   m_CullTransparentMesh: 0
---- !u!114 &2004625292 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4780979555968001413, guid: 4482f4c71ef6f864887c2e53802c75a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 3822181221336499910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82fcf0aba1d797b4b94a065279b8d9ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2102740182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,11 +2405,6 @@ PrefabInstance:
     - target: {fileID: 3822181219724632819, guid: 4482f4c71ef6f864887c2e53802c75a5,
         type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3822181219724632819, guid: 4482f4c71ef6f864887c2e53802c75a5,
-        type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3822181219724738263, guid: 4482f4c71ef6f864887c2e53802c75a5,
@@ -2484,11 +2467,6 @@ PrefabInstance:
       propertyPath: gameOverCanvas
       value: 
       objectReference: {fileID: 1766212598}
-    - target: {fileID: 7147694147799659608, guid: 4482f4c71ef6f864887c2e53802c75a5,
-        type: 3}
-      propertyPath: deathHandler
-      value: 
-      objectReference: {fileID: 2004625292}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4482f4c71ef6f864887c2e53802c75a5, type: 3}
 --- !u!1001 &5180491405613972234
