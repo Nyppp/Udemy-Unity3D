@@ -15,27 +15,32 @@ public class Weapon : MonoBehaviour
     //Ammo클래스에 대해 선언했으나 Ammo클래스를 포함한 Player 인스턴스 자체를 할당하면,
     //narrow 캐스팅으로 Ammo클래스를 참조할 수 있음
     [SerializeField] Ammo ammo;
+    [SerializeField] float shootDelay = 1f;
+
+    bool canShoot = true;
     
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") && canShoot)
         {
-            Shoot();
+            StartCoroutine(Shoot());
         }
     }
 
-    private void Shoot()
+    IEnumerator Shoot()
     {
-        if(ammo.GetCurrentAmmo() <= 0 )
+        if(ammo.GetCurrentAmmo() > 0 )
         {
-            Debug.Log("총알 부족");
-            return;
+            PlayMuzzleFlash();
+            ProcessRaycast();
+            ammo.ReduceCurrentAmmo();
+            canShoot = false;
         }
 
-        PlayMuzzleFlash();
-        ProcessRaycast();
-        ammo.ReduceCurrentAmmo();
+
+        yield return new WaitForSeconds(shootDelay);
+        canShoot = true;
     }
 
     private void PlayMuzzleFlash()
