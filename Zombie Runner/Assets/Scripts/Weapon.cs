@@ -16,13 +16,18 @@ public class Weapon : MonoBehaviour
     //narrow 캐스팅으로 Ammo클래스를 참조할 수 있음
     [SerializeField] Ammo ammo;
     [SerializeField] float shootDelay = 1f;
+    [SerializeField] AmmoType ammoType;
 
     bool canShoot = true;
-    
+
+    private void OnEnable()
+    {
+        canShoot = true;
+    }
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && canShoot)
+        if (Input.GetButtonDown("Fire1") && canShoot)
         {
             StartCoroutine(Shoot());
         }
@@ -30,14 +35,13 @@ public class Weapon : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        if(ammo.GetCurrentAmmo() > 0 )
+        if (ammo.GetCurrentAmmo(ammoType) > 0)
         {
             PlayMuzzleFlash();
             ProcessRaycast();
-            ammo.ReduceCurrentAmmo();
+            ammo.ReduceCurrentAmmo(ammoType);
             canShoot = false;
         }
-
 
         yield return new WaitForSeconds(shootDelay);
         canShoot = true;

@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3d1b5a1a2aa8e438d5f7863dc046c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoAmount: 10
+  ammoSlots: []
 --- !u!114 &7463940397763990103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +409,10 @@ PrefabInstance:
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 3822181219723124949}
+    - target: {fileID: 868895506, guid: 620b63b40e7e10245a9b1d0265947767, type: 3}
+      propertyPath: ammoType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2337074158996965286, guid: 620b63b40e7e10245a9b1d0265947767,
         type: 3}
       propertyPath: m_RootOrder
@@ -580,6 +584,10 @@ PrefabInstance:
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 3822181219723124949}
+    - target: {fileID: 868895506, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: ammoType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2337074158996965286, guid: ada2587319194f542957a8c2ae277cb9,
         type: 3}
       propertyPath: m_RootOrder

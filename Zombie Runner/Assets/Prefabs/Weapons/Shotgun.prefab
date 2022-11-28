@@ -343,6 +343,8 @@ MonoBehaviour:
   muzzleFlash: {fileID: 3713148187893670054}
   hitEffect: {fileID: 4308641894310906942}
   ammo: {fileID: 0}
+  shootDelay: 1
+  ammoType: 2
 --- !u!1 &2337074158997199752
 GameObject:
   m_ObjectHideFlags: 0

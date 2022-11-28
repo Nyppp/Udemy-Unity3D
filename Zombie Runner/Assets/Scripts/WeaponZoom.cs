@@ -23,16 +23,33 @@ public class WeaponZoom : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Mouse1))
         {
-            cameraView.fieldOfView = Mathf.Lerp(cameraView.fieldOfView, zoomFov, 0.1f);
-            fpsController.mouseLook.XSensitivity = zoomInSensitivity;
-            fpsController.mouseLook.YSensitivity = zoomInSensitivity;
-            
+            ZoomIn();
         }
         else
         {
-            cameraView.fieldOfView = Mathf.Lerp(cameraView.fieldOfView, defaultFov, 0.1f);
-            fpsController.mouseLook.XSensitivity = zoomOutSensitivity;
-            fpsController.mouseLook.YSensitivity = zoomOutSensitivity;
+            ZoomOut();
         }
     }
+
+    void ZoomIn()
+    {
+        cameraView.fieldOfView = Mathf.Lerp(cameraView.fieldOfView, zoomFov, 0.1f);
+        fpsController.mouseLook.XSensitivity = zoomInSensitivity;
+        fpsController.mouseLook.YSensitivity = zoomInSensitivity;
+    }
+
+    void ZoomOut()
+    {
+        cameraView.fieldOfView = Mathf.Lerp(cameraView.fieldOfView, defaultFov, 0.1f);
+        fpsController.mouseLook.XSensitivity = zoomOutSensitivity;
+        fpsController.mouseLook.YSensitivity = zoomOutSensitivity;
+    }
+
+    private void OnDisable()
+    {
+        cameraView.fieldOfView = defaultFov;
+        fpsController.mouseLook.XSensitivity = zoomOutSensitivity;
+        fpsController.mouseLook.YSensitivity = zoomOutSensitivity;
+    }
+
 }
