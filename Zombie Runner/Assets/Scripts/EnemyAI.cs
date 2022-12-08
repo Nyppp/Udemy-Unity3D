@@ -15,16 +15,17 @@ public class EnemyAI : MonoBehaviour
 
     bool isProvoked = false;
     EnemyHealth health;
+    EnemyAttack attack;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         health = GetComponent<EnemyHealth>();
+        attack = GetComponent<EnemyAttack>();
     }
 
     void Update()
     {
-
         SetDestination();
     }
 

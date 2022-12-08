@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7882816789541101848}
+  - component: {fileID: 335625473}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -33,6 +34,19 @@ Transform:
   m_Father: {fileID: 3822181219724738261}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &335625473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149961197174006347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8422bd55c6ff774196a85d75f4bf4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 0
 --- !u!1 &3822181219724632817
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +232,7 @@ GameObject:
   - component: {fileID: 4708618618643393582}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -375,7 +389,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3d1b5a1a2aa8e438d5f7863dc046c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoSlots: []
+  ammoSlots:
+  - ammoType: 0
+    ammoAmount: 10
+  - ammoType: 1
+    ammoAmount: 20
+  - ammoType: 2
+    ammoAmount: 8
 --- !u!114 &7463940397763990103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,12 +426,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4708618618643393582}
     - target: {fileID: 868895506, guid: 620b63b40e7e10245a9b1d0265947767, type: 3}
+      propertyPath: range
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 868895506, guid: 620b63b40e7e10245a9b1d0265947767, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 868895506, guid: 620b63b40e7e10245a9b1d0265947767, type: 3}
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 3822181219723124949}
     - target: {fileID: 868895506, guid: 620b63b40e7e10245a9b1d0265947767, type: 3}
       propertyPath: ammoType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 868895506, guid: 620b63b40e7e10245a9b1d0265947767, type: 3}
+      propertyPath: shootDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2337074158996965286, guid: 620b63b40e7e10245a9b1d0265947767,
         type: 3}
@@ -492,6 +524,14 @@ PrefabInstance:
       propertyPath: ammo
       value: 
       objectReference: {fileID: 4708618618643393582}
+    - target: {fileID: 868895506, guid: b2efbc5e266803b45ab5c4aa0d556445, type: 3}
+      propertyPath: range
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 868895506, guid: b2efbc5e266803b45ab5c4aa0d556445, type: 3}
+      propertyPath: damage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 868895506, guid: b2efbc5e266803b45ab5c4aa0d556445, type: 3}
       propertyPath: FPCamera
       value: 
@@ -581,12 +621,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4708618618643393582}
     - target: {fileID: 868895506, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 868895506, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 3822181219723124949}
     - target: {fileID: 868895506, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
       propertyPath: ammoType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 868895506, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: shootDelay
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2337074158996965286, guid: ada2587319194f542957a8c2ae277cb9,
         type: 3}

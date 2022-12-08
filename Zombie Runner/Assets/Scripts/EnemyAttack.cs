@@ -27,6 +27,5 @@ public class EnemyAttack : MonoBehaviour
         target.GetComponent<PlayerHealth>().TakeDamage(damage);
 
         Debug.Log("플레이어가 공격당함");
-        
     }
 }
