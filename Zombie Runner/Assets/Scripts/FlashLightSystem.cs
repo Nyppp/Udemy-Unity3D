@@ -29,7 +29,7 @@ public class FlashLightSystem : MonoBehaviour
 
     public void RestoreLightIntensity(float intensityAmount)
     {
-        playerLight.intensity += intensityAmount;
+        playerLight.intensity = intensityAmount;
     }
 
     private void DecreaseLightIntensity()

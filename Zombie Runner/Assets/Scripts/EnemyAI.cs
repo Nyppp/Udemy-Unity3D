@@ -6,7 +6,6 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] Transform target;
     [SerializeField] float chaseRange = 10f;
     [SerializeField] float turnSpeed = 5f;
 
@@ -16,12 +15,14 @@ public class EnemyAI : MonoBehaviour
     bool isProvoked = false;
     EnemyHealth health;
     EnemyAttack attack;
+    Transform target;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         health = GetComponent<EnemyHealth>();
         attack = GetComponent<EnemyAttack>();
+        target = FindObjectOfType<PlayerHealth>().transform;
     }
 
     void Update()
@@ -84,9 +85,12 @@ public class EnemyAI : MonoBehaviour
 
     private void ChaseTarget()
     {
-        GetComponent<Animator>().SetBool("Attack", false);
-        GetComponent<Animator>().SetTrigger("Move");
-        navMeshAgent.destination = target.position;
+        if (enabled == true)
+        {
+            GetComponent<Animator>().SetBool("Attack", false);
+            GetComponent<Animator>().SetTrigger("Move");
+            navMeshAgent.destination = target.position;
+        }
     }
 
     private void OnDrawGizmosSelected()

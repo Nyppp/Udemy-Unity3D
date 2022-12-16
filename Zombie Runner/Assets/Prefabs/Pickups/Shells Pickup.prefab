@@ -104,7 +104,7 @@ PrefabInstance:
     - target: {fileID: 7179304367116255828, guid: cc5d587093907564b8302b46bd2f7e97,
         type: 3}
       propertyPath: m_SelectedEditorRenderState
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7237148106641966092, guid: cc5d587093907564b8302b46bd2f7e97,
         type: 3}

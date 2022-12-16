@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damage;
         Debug.Log("플레이어 체력 : " + health);
+        GetComponent<DisplayDamage>().EnableHitEffect();
 
         if(health <= 0f)
         {
